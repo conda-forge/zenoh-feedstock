@@ -8,7 +8,7 @@ source:
     sha256: b616d6656b090ab7848dc96d7ff132d8645c7c95315178cdc35f5edb8ed7c3c6
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   # This is just a meta packages used to capture the exact version of zenoh (to which a unique Cargo.lock
