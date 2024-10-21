@@ -1,14 +1,14 @@
-{% set version = "0.11.0" %}
+{% set version = "1.0.0" %}
 package:
   name: zenoh-split
   version: {{ version }}
 
 source:
   - url: https://github.com/eclipse-zenoh/zenoh/archive/refs/tags/{{ version }}.tar.gz
-    sha256: b616d6656b090ab7848dc96d7ff132d8645c7c95315178cdc35f5edb8ed7c3c6
+    sha256: 0a574eaca358b4abf8c2e108e8945cab29864510fbbc00a84c5a555b71857a55
 
 build:
-  number: 1
+  number: 0
 
 outputs:
   # This is just a meta packages used to capture the exact version of zenoh (to which a unique Cargo.lock
@@ -98,10 +98,10 @@ outputs:
 about:
   home: https://zenoh.io/
   license: Apache-2.0 OR EPL-2.0
-  license_file: 
+  license_file:
     - LICENSE
     - THIRDPARTY.yml
-  summary: zenoh unifies data in motion, data in-use, data at rest and computations. It carefully blends traditional pub/sub with geo-distributed storages, queries and computations, while retaining a level of time and space efficiency that is well beyond any of the mainstream stacks. 
+  summary: zenoh unifies data in motion, data in-use, data at rest and computations. It carefully blends traditional pub/sub with geo-distributed storages, queries and computations, while retaining a level of time and space efficiency that is well beyond any of the mainstream stacks.
 
 extra:
   feedstock-name: zenoh
