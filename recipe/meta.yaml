@@ -1,11 +1,11 @@
-{% set version = "1.7.2" %}
+{% set version = "1.8.0" %}
 package:
   name: zenoh-split
   version: {{ version }}
 
 source:
   - url: https://github.com/eclipse-zenoh/zenoh/archive/refs/tags/{{ version }}.tar.gz
-    sha256: 8f12c2b815e3b27a4a9b431862068292d03f882b223c6673492b091b55c647f8
+    sha256: 1046c56765491556f11efd6ac9880a4d4bce7497e69448745eb14b03bde0d2ab
 
 build:
   number: 0
