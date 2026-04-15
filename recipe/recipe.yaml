@@ -1,0 +1,109 @@
+schema_version: 1
+
+context:
+  version: 1.9.0
+
+recipe:
+  name: zenoh-split
+  version: ${{ version }}
+
+source:
+  - url: https://github.com/eclipse-zenoh/zenoh/archive/refs/tags/${{ version }}.tar.gz
+    sha256: f0323de51e77c866cc06c57357073e2760fd3ef4c5efce893a61fe7b9bd0b21a
+
+build:
+  number: 0
+
+outputs:
+  - package:
+      name: zenoh-rust-abi
+      version: ${{ version }}.${{ rust_compiler_version }}
+    build:
+      script:
+        file: ${{ "build_zenoh_rust_abi.sh" if unix else "bld_zenoh_rust_abi.bat" }}
+    requirements:
+      build:
+        - ${{ compiler('rust') }}
+        - ${{ stdlib('c') }}
+        - cargo-bundle-licenses
+      run_exports:
+        - ${{ pin_subpackage('zenoh-rust-abi', upper_bound='x.x.x.x.x.x') }}
+    tests:
+      - script:
+          - echo "Metapackage, no test required"
+
+  - package:
+      name: zenohd
+    build:
+      script:
+        file: ${{ "build_zenohd.sh" if unix else "bld_zenohd.bat" }}
+    requirements:
+      build:
+        - ${{ compiler('rust') }}
+        - ${{ stdlib('c') }}
+        - ${{ compiler('c') }}
+      host:
+        - ${{ pin_subpackage('zenoh-rust-abi', exact=True) }}
+    tests:
+      - package_contents:
+          bin:
+            - zenohd
+
+  - package:
+      name: zenoh-plugin-rest
+    build:
+      script:
+        file: ${{ "build_zenoh_plugin_rest.sh" if unix else "bld_zenoh_plugin_rest.bat" }}
+    requirements:
+      build:
+        - ${{ compiler('rust') }}
+        - ${{ stdlib('c') }}
+        - ${{ compiler('c') }}
+      host:
+        - ${{ pin_subpackage('zenoh-rust-abi', exact=True) }}
+    tests:
+      - package_contents:
+          lib:
+            - zenoh_plugin_rest
+
+  - package:
+      name: zenoh-plugin-storage-manager
+    build:
+      script:
+        file: ${{ "build_zenoh_plugin_storage_manager.sh" if unix else "bld_zenoh_plugin_storage_manager.bat" }}
+    requirements:
+      build:
+        - ${{ compiler('rust') }}
+        - ${{ stdlib('c') }}
+        - ${{ compiler('c') }}
+      host:
+        - ${{ pin_subpackage('zenoh-rust-abi', exact=True) }}
+    tests:
+      - package_contents:
+          lib:
+            - zenoh_plugin_storage_manager
+
+  - package:
+      name: zenoh
+    requirements:
+      run:
+        - ${{ pin_subpackage('zenohd', exact=True) }}
+        - ${{ pin_subpackage('zenoh-plugin-rest', exact=True) }}
+        - ${{ pin_subpackage('zenoh-plugin-storage-manager', exact=True) }}
+    tests:
+      - package_contents:
+          bin:
+            - zenohd
+
+about:
+  homepage: https://zenoh.io/
+  license: Apache-2.0 OR EPL-2.0
+  license_file:
+    - LICENSE
+    - THIRDPARTY.yml
+  summary: zenoh unifies data in motion, data in-use, data at rest and computations. It carefully blends traditional pub/sub with geo-distributed storages, queries and computations, while retaining a level of time and space efficiency that is well beyond any of the mainstream stacks.
+
+extra:
+  feedstock-name: zenoh
+  recipe-maintainers:
+    - traversaro
