@@ -49,6 +49,7 @@ outputs:
         - ${{ stdlib('c') }}
         # required as on Linux unwind's rust functionality depends on gcc_s library
         - ${{ compiler('c') }}
+        - cargo-bundle-licenses
       host:
         - zenoh-rust-abi ${{ version }}.${{ rust_compiler_version }}.*
     tests:
@@ -67,6 +68,7 @@ outputs:
         - ${{ stdlib('c') }}
         # required as on Linux unwind's rust functionality depends on gcc_s library
         - ${{ compiler('c') }}
+        - cargo-bundle-licenses
       host:
         - zenoh-rust-abi ${{ version }}.${{ rust_compiler_version }}.*
     tests:
@@ -85,6 +87,7 @@ outputs:
         - ${{ stdlib('c') }}
         # required as on Linux unwind's rust functionality depends on gcc_s library
         - ${{ compiler('c') }}
+        - cargo-bundle-licenses
       host:
         - zenoh-rust-abi ${{ version }}.${{ rust_compiler_version }}.*
     tests:
@@ -98,6 +101,8 @@ outputs:
   # https://github.com/eclipse-zenoh/homebrew-zenoh/blob/e29d4ac6b6848234ca596aaa1a2cce2090c43513/README.md#available-formulae
   - package:
       name: zenoh
+    about:
+      license_file: LICENSE
     requirements:
       run:
         - ${{ pin_subpackage('zenohd', exact=True) }}
