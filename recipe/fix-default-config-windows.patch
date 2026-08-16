@@ -1,0 +1,10 @@
+--- a/zenoh/src/api/config.rs
++++ b/zenoh/src/api/config.rs
+@@ -34,6 +34,6 @@
+ #[doc = concat!(
+     "```json5\n",
+-    include_str!("../../DEFAULT_CONFIG.json5"),
++    include_str!("../../../DEFAULT_CONFIG.json5"),
+     "\n```"
+ )]
+ ///

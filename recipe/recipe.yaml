@@ -10,6 +10,12 @@ recipe:
 source:
   - url: https://github.com/eclipse-zenoh/zenoh/archive/refs/tags/${{ version }}.tar.gz
     sha256: 84f49e867d7645669e5c6ef3b898545aef403b7d6afec90b619800524f3359f3
+    patches:
+      # The GitHub source archive contains zenoh/DEFAULT_CONFIG.json5 as a symlink,
+      # which rattler-build cannot extract as a usable file on Windows.
+      - if: win
+        then:
+          - fix-default-config-windows.patch
 
 build:
   number: 2
