@@ -26,8 +26,8 @@ outputs:
         file: build_zenoh_rust_abi
     requirements:
       build:
-        # In theory this is not necessary, but we exploit the fact that this is the first
-        # package built to generate the THIRDPARTY.yml file
+        # Each rattler-build output has an independent source worktree, so outputs that
+        # package Rust binaries generate their own THIRDPARTY.yml file.
         - ${{ compiler('rust') }}
         - ${{ stdlib('c') }}
         - cargo-bundle-licenses
@@ -109,9 +109,8 @@ outputs:
         - ${{ pin_subpackage('zenoh-plugin-rest', exact=True) }}
         - ${{ pin_subpackage('zenoh-plugin-storage-manager', exact=True) }}
     tests:
-      - package_contents:
-          bin:
-            - zenohd
+      - script:
+          - zenohd --version
 
 about:
   homepage: https://zenoh.io/
