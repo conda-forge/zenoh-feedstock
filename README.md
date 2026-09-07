@@ -3,6 +3,46 @@ About zenoh-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/zenoh-feedstock/blob/main/LICENSE.txt)
 
+
+About zenoh
+-----------
+
+Home: https://zenoh.io/
+
+Package license: Apache-2.0 OR EPL-2.0
+
+Summary: zenoh unifies data in motion, data in-use, data at rest and computations. It carefully blends traditional pub/sub with geo-distributed storages, queries and computations, while retaining a level of time and space efficiency that is well beyond any of the mainstream stacks.
+
+About zenoh-plugin-rest
+-----------------------
+
+Home: https://zenoh.io/
+
+Package license: Apache-2.0 OR EPL-2.0
+
+Summary: zenoh unifies data in motion, data in-use, data at rest and computations. It carefully blends traditional pub/sub with geo-distributed storages, queries and computations, while retaining a level of time and space efficiency that is well beyond any of the mainstream stacks.
+
+About zenoh-plugin-storage-manager
+----------------------------------
+
+Home: https://zenoh.io/
+
+Package license: Apache-2.0 OR EPL-2.0
+
+Summary: zenoh unifies data in motion, data in-use, data at rest and computations. It carefully blends traditional pub/sub with geo-distributed storages, queries and computations, while retaining a level of time and space efficiency that is well beyond any of the mainstream stacks.
+
+About zenoh-rust-abi
+--------------------
+
+Home: https://zenoh.io/
+
+Package license: Apache-2.0 OR EPL-2.0
+
+Summary: zenoh unifies data in motion, data in-use, data at rest and computations. It carefully blends traditional pub/sub with geo-distributed storages, queries and computations, while retaining a level of time and space efficiency that is well beyond any of the mainstream stacks.
+
+About zenohd
+------------
+
 Home: https://zenoh.io/
 
 Package license: Apache-2.0 OR EPL-2.0

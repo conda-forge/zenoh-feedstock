@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: 1.10.0
+  version: "1.10.1"
 
 recipe:
   name: zenoh-split
@@ -9,7 +9,7 @@ recipe:
 
 source:
   - url: https://github.com/eclipse-zenoh/zenoh/archive/refs/tags/${{ version }}.tar.gz
-    sha256: 84f49e867d7645669e5c6ef3b898545aef403b7d6afec90b619800524f3359f3
+    sha256: 9977c67736867032094f4d34d1cf527448b1148f42216d37b65ac1fb0ef6d75d
     patches:
       # The GitHub source archive contains zenoh/DEFAULT_CONFIG.json5 as a symlink,
       # which rattler-build cannot extract as a usable file on Windows.
@@ -18,7 +18,7 @@ source:
           - fix-default-config-windows.patch
 
 build:
-  number: 2
+  number: 0
 
 outputs:
   # This is just a meta packages used to capture the exact version of zenoh (to which a unique Cargo.lock
